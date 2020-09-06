@@ -5,7 +5,9 @@ import Button from './button';
 
 describe('<Button />', () => {
     it('Should call props.onClick when the button is clicked', () => {
-        const wrapper = shallow(<Button />);
+        const onClick = jest.fn();
+        const wrapper = shallow(<Button onClick={onClick}/>);
         wrapper.find('button').simulate('click');
+        expect(onClick).toHaveBeenCalled();
     });
 });
